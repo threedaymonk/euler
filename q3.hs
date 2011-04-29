@@ -7,7 +7,7 @@ module Main where
 import Data.List
 import Data.Maybe
 
-main = putStrLn (show ans)
+main = putStrLn $ show ans
 
 ans = head $ primeFactors 600851475143
 

@@ -10,7 +10,7 @@
 
 module Main where
 
-main = putStrLn (show ans)
+main = putStrLn $ show ans
 
 ans = sum $ filter even $ takeWhile (<4000000) $ map fib [1..]
 
