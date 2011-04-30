@@ -7,8 +7,7 @@
 -}
 
 module Main where
-import Data.List
-import Data.Maybe
+import Euler
 
 main = putStrLn $ show ans
 
@@ -20,20 +19,3 @@ minimalFactors n = map maxOccurrences (filter isPrime numbers)
     maxOccurrences i = (i, maximum $ map length $ map (filter (== i)) pfList)
     pfList = map primeFactors numbers
     numbers = [2 .. n]
-
--- Copied from solution to problem 3:
-
-primeFactors n = fst $ primeFactors' ([], n)
-
-primeFactors' (xs, 1) = (xs, 1)
-primeFactors' (xs, n) = primeFactors' (f : xs, n `div` f)
-  where f = smallestPrimeFactor n
-
-smallestPrimeFactor n = fromJust $ find isPrimeFactor [2..]
-  where isPrimeFactor x = isFactor n x && isPrime x
-
-
-isPrime n = null $ filter (isFactor n) $ takeWhile notTooBig [2..]
-  where notTooBig m = m * m <= n
-
-isFactor n m = n `rem` m == 0
