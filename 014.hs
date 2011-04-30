@@ -23,11 +23,11 @@ import Euler
 
 main = putStrLn $ show $ ans
 
-ans = maximumBy' compareSnd $ map (\x -> (x, length $ chain [x])) [1..999999]
+ans = maximumBy' compareSnd $ map (\x -> (x, chainLength x)) [1..999999]
   where compareSnd a b = compare (snd a) (snd b)
 
-chain (1:xs) = 1:xs
-chain (x:xs) = chain $ (chain' x) : x : xs
+chainLength 1 = 1
+chainLength n = 1 + chainLength (chain' n)
 
 chain' n
   | even n = n `div` 2
