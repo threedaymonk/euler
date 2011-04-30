@@ -29,9 +29,10 @@ maxProduct = maximum $ map maxForSteps [(1,0), (0,1), (1,1), (-1,1)]
 maxForSteps steps = maximum $ map product $ map (sequenceAt steps) $ startPoints steps
   where
     startPoints (di,dj) = [ (i, j) | i <- stepRange di , j <- stepRange dj ]
-    stepRange d = [lb .. ub]
-      where lb = maximum [1, 1 + (1-seqSize)*d]
-            ub = minimum [gridSize, gridSize - (seqSize-1)*d]
+    stepRange d
+              | d ==  0 = [1 .. gridSize]
+              | d ==  1 = [1 .. gridSize - seqSize + 1]
+              | d == -1 = [seqSize .. gridSize]
     sequenceAt (di,dj) (i,j) = [ grid ! (i + a*di, j + a*dj) | a <- [0 .. seqSize-1] ]
 
 numbers = [
