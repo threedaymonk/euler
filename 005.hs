@@ -17,7 +17,7 @@ ans = foldl (*) 1 (map product (minimalFactors 20))
 
 minimalFactors n = map maxOccurrences (filter isPrime numbers)
   where
-    maxOccurrences i = (i, maximum $ map length (map (filter (== i)) pfList))
+    maxOccurrences i = (i, maximum $ map length $ map (filter (== i)) pfList)
     pfList = map primeFactors numbers
     numbers = [2 .. n]
 
