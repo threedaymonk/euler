@@ -25,3 +25,8 @@ maximumBy' cmp xs =  foldl1' maxBy xs
     maxBy x y = case cmp x y of
                 GT -> x
                 _  -> y
+
+sumDigits n = sumDigits' 0 n
+  where
+    sumDigits' acc    0 = acc
+    sumDigits' acc rest = sumDigits' (acc + (rest `rem` 10)) (rest `div` 10)

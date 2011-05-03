@@ -3,10 +3,6 @@
 -}
 
 module Main where
+import Euler
 
-main = putStrLn $ show $ ans $ 2^1000
-
-ans n = f 0 n
-  where
-    f acc 0 = acc
-    f acc n = f (acc + (n `rem` 10)) (n `div` 10)
+main = putStrLn $ show $ sumDigits $ 2^1000
