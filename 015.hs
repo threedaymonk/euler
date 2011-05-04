@@ -10,10 +10,10 @@
 
 module Main where
 
-main = putStrLn $ show $ routes 20
+main = print $ routes 20
 
 routes n = combinations (n*2) n
 
 factorial = product . enumFromTo 1
 
-combinations n r = (factorial n) `div` ((factorial (n-r)) * (factorial r))
+combinations n r = factorial n `div` (factorial (n-r) * factorial r)

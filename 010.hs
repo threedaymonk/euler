@@ -8,7 +8,7 @@ module Main where
 import qualified Data.Map as Map
 import Data.List
 
-main = putStrLn $ show $ ans 2000000
+main = print $ ans 2000000
 
 -- Use a strict left fold to avoid running out of stack space
 ans n = foldl' (+) 0 $ takeWhile (< n) primes

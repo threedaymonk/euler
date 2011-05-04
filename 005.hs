@@ -9,13 +9,13 @@
 module Main where
 import Euler
 
-main = putStrLn $ show ans
+main = print ans
 
-ans = foldl (*) 1 (map product (minimalFactors 20))
-  where product (a, b) = a ^ b
+ans = product $ map pow $ minimalFactors 20
+  where pow (a, b) = a ^ b
 
 minimalFactors n = map maxOccurrences (filter isPrime numbers)
   where
-    maxOccurrences i = (i, maximum $ map length $ map (filter (== i)) pfList)
+    maxOccurrences i = (i, maximum $ map (length . filter (== i)) pfList)
     pfList = map primeFactors numbers
     numbers = [2 .. n]

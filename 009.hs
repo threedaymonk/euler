@@ -11,9 +11,9 @@
 
 module Main where
 
-main = putStrLn $ show $ ans
+main = print ans
 
-ans = head $
+ans = head
   [ a*b*c
   | a <- [1 .. 998]
   , b <- [a+1 .. 1000-a]

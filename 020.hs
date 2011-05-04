@@ -13,9 +13,8 @@
 -}
 
 module Main where
-import Data.List
 import Euler
 
-main = putStrLn $ show $ sumDigits $ fac 100
+main = print $ sumDigits $ fac 100
 
-fac n = foldl' (*) 1 [1..n]
+fac n = product [1..n]

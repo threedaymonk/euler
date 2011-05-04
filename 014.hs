@@ -19,12 +19,12 @@
 
 module Main where
 import Data.List
+import Data.Ord
 import Euler
 
-main = putStrLn $ show $ ans
+main = print ans
 
-ans = maximumBy' compareSnd $ map (\x -> (x, chainLength x)) [1..999999]
-  where compareSnd a b = compare (snd a) (snd b)
+ans = maximumBy' (comparing snd) $ map (\x -> (x, chainLength x)) [1..999999]
 
 chainLength 1 = 1
 chainLength n = 1 + chainLength (chain' n)

@@ -25,11 +25,11 @@ module Main where
 import Euler
 import Data.List
 
-main = putStrLn $ show $ ans 500
+main = print $ ans 500
 
 ans n = head [ i | i <- triangles, n < divisors i ]
 
-divisors n = foldl (*) 1 $ map (\x -> 1 + snd x) $ primeFactorisation n
+divisors n = product $ map (\x -> 1 + snd x) $ primeFactorisation n
 
 triangles = map triangle [1..]
   where

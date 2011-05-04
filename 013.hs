@@ -6,7 +6,7 @@
 module Main where
 import Data.List
 
-main = putStrLn $ ans
+main = putStrLn ans
 
 ans = take 10 $ show $ foldl' (+) 0 numbers
 

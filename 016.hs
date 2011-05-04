@@ -5,4 +5,4 @@
 module Main where
 import Euler
 
-main = putStrLn $ show $ sumDigits $ 2^1000
+main = print $ sumDigits $ 2^1000

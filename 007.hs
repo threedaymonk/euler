@@ -7,10 +7,10 @@
 
 module Main where
 
-main = putStrLn $ show $ nthPrime 10001
+main = print $ nthPrime 10001
 
 nthPrime 1 = 2
-nthPrime n = head $ filter isPrime [((nthPrime (n-1)) + 1)..]
+nthPrime n = head $ filter isPrime [(nthPrime (n-1) + 1)..]
 
 isPrime n = null $ filter (isFactor n) $ takeWhile notTooBig [2..]
   where

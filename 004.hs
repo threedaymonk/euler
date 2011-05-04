@@ -8,9 +8,9 @@
 module Main where
 import Data.List
 
-main = putStrLn $ show ans
+main = print ans
 
 ans = maximum [ i*j | i <- factors, j <- factors, isPalindrome(i*j) ]
   where factors = [100..999]
 
-isPalindrome n = (show n) == (reverse (show n))
+isPalindrome n = show n == reverse (show n)

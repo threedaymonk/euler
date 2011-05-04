@@ -6,12 +6,11 @@
 module Main where
 import Data.Char
 
-main = putStrLn $ show $ maximum $ products 5
+main = print $ maximum $ products 5
 
-products n = map product $ map subseq [0 .. (length digits)-n]
+products n = map (product . subseq) [0 .. length digits - n]
   where
     subseq i = map (digits !!) [i .. n+i-1]
-    product xs = foldl (*) 1 xs
 
 digits = map digitToInt $ filter (`elem` ['0'..'9']) number
 

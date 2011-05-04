@@ -18,7 +18,7 @@
 module Main where
 import Array
 
-main = putStrLn $ show $ maxProduct
+main = print maxProduct
 
 gridSize = 20
 seqSize = 4
@@ -26,7 +26,7 @@ grid = listArray ((1,1), (gridSize,gridSize)) numbers
 
 maxProduct = maximum $ map maxForSteps [(1,0), (0,1), (1,1), (-1,1)]
 
-maxForSteps steps = maximum $ map product $ map (sequenceAt steps) $ startPoints steps
+maxForSteps steps = maximum $ map (product . sequenceAt steps) $ startPoints steps
   where
     startPoints (di,dj) = [ (i, j) | i <- stepRange di , j <- stepRange dj ]
     stepRange d

@@ -16,9 +16,9 @@
 
 module Main where
 
-main = putStrLn $ show $ ans 100
+main = print $ ans 100
 
-ans n = (sqSum n) - (sumSq n)
+ans n = sqSum n - sumSq n
   where
     sumSq n = sum $ map (^2) [1 .. n]
-    sqSum n = (sum [1 .. n]) ^ 2
+    sqSum n = sum [1 .. n] ^ 2

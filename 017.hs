@@ -15,11 +15,11 @@
 module Main where
 import Data.List
 
-main = putStrLn $ show $ ans 1000
+main = print $ ans 1000
 
 ans n = length $ filter isLetter $ foldl' (++) "" $ map english [1..n]
   where
-    isLetter c = elem c ['a'..'z']
+    isLetter c = c `elem` ['a'..'z']
 
 english n
   | n ==  1 = "one"
@@ -49,9 +49,9 @@ english n
   | n == 70 = "seventy"
   | n == 80 = "eighty"
   | n == 90 = "ninety"
-  | n < 100 = (english (n // 10)) ++ "-" ++ (english (n `rem` 10))
-  | n < 1000 && (n `rem` 100) == 0 = (english (n `div` 100)) ++ " hundred"
-  | n < 1000 = (english (n // 100)) ++ " and " ++ (english (n `rem` 100))
+  | n < 100 = english (n // 10) ++ "-" ++ english (n `rem` 10)
+  | n < 1000 && (n `rem` 100) == 0 = english (n `div` 100) ++ " hundred"
+  | n < 1000 = english (n // 100) ++ " and " ++ english (n `rem` 100)
   | n == 1000 = "one thousand"
   where
     (//) n r = (n `div` r) * r
