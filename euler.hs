@@ -30,3 +30,5 @@ sumDigits n = sumDigits' 0 n
   where
     sumDigits' acc    0 = acc
     sumDigits' acc rest = sumDigits' (acc + (rest `rem` 10)) (rest `div` 10)
+
+properDivisors n = filter (\x -> n `rem` x == 0) [1..n `div` 2]

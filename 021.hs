@@ -13,10 +13,11 @@
 -}
 
 module Main where
+import Euler
 
 main = print $ sum $ filter amicable [1..9999]
 
 amicable a = d a == b && d b == a && a /= b
   where
     b = d a
-    d n = sum $ filter (\x -> n `rem` x == 0) [1..n `div` 2]
+    d n = sum $ properDivisors n
