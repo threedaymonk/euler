@@ -1,5 +1,8 @@
 #!/bin/sh
 
+target="tmp/compiled"
 mkdir -p tmp
-ghc $1 euler.hs --make -o tmp/compiled && rm *.hi *.o && ./tmp/compiled
-rm tmp/compiled
+hlint $1 && \
+ghc $1 euler.hs --make -o $target && \
+rm -f *.hi *.o && ./$target && \
+rm -f $target
