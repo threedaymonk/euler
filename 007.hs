@@ -12,7 +12,7 @@ main = print $ nthPrime 10001
 nthPrime 1 = 2
 nthPrime n = head $ filter isPrime [(nthPrime (n-1) + 1)..]
 
-isPrime n = null $ filter (isFactor n) $ takeWhile notTooBig [2..]
+isPrime n = not $ any (isFactor n) (takeWhile notTooBig [2..])
   where
     notTooBig m = m * m <= n
     isFactor n m = n `rem` m == 0

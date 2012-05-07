@@ -20,7 +20,7 @@ primeFactors' (xs, n) = primeFactors' (f : xs, n `div` f)
 smallestPrimeFactor n = fromJust $ find isPrimeFactor [2..]
   where isPrimeFactor x = isFactor n x && isPrime x
 
-isPrime n = null $ filter (isFactor n) $ takeWhile notTooBig [2..]
+isPrime n = not $ any (isFactor n) (takeWhile notTooBig [2..])
   where notTooBig m = m * m <= n
 
 isFactor n m = n `rem` m == 0
