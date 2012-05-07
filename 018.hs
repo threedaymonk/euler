@@ -20,9 +20,11 @@
 -}
 
 module Main where
+import System (getArgs)
 
 main = do
-  text <- readFile "018.txt"
+  args <- getArgs
+  text <- readFile $ head args
   print $ maximum $ maxTriangle [] (readTriangle text)
 
 readTriangle :: String -> [[Int]]

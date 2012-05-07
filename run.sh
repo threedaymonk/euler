@@ -10,4 +10,5 @@ ghc $1 euler.hs --make -o $target
 rm -f *.hi *.o
 echo "Running $target"
 echo
-./$target
+shift 1 $@
+./$target "$@"
