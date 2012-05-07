@@ -14,7 +14,7 @@ module Main where
 import Data.List
 import Data.Char
 
-main = print ans
+main = putStr ans
 
 ans = map intToDigit $ perms [0..9] !! 999999
 

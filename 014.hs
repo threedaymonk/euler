@@ -24,7 +24,7 @@ import Euler
 
 main = print ans
 
-ans = maximumBy' (comparing snd) $ map (\x -> (x, chainLength x)) [1..999999]
+ans = fst $ maximumBy' (comparing snd) $ map (\x -> (x, chainLength x)) [1..999999]
 
 chainLength 1 = 1
 chainLength n = 1 + chainLength (chain' n)
