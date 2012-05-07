@@ -11,7 +11,7 @@ primeFactors' (xs, n) = primeFactors' (f : xs, n `div` f)
 smallestPrimeFactor n = fromJust $ find isPrimeFactor [2..]
   where isPrimeFactor x = isFactor n x && isPrime x
 
-isPrime n = null $ filter (isFactor n) $ takeWhile notTooBig [2..]
+isPrime n = not $ any (isFactor n) $ takeWhile notTooBig [2..]
   where notTooBig m = m * m <= n
 
 isFactor n m = n `rem` m == 0
@@ -31,4 +31,4 @@ sumDigits n = sumDigits' 0 n
     sumDigits' acc    0 = acc
     sumDigits' acc rest = sumDigits' (acc + (rest `rem` 10)) (rest `div` 10)
 
-properDivisors n = filter (\x -> n `rem` x == 0) [1..n `div` 2]
+properDivisors n = filter ((==0) . rem n) [1..n `div` 2]
