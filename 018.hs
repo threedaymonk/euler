@@ -23,23 +23,19 @@ module Main where
 
 main = do
   text <- readFile "018.txt"
-  print $ maxPath $ readTriangle text
+  print $ maximum $ maxTriangle [] (readTriangle text)
 
 readTriangle :: String -> [[Int]]
 readTriangle s = readTriangle' 1 (map read (words s))
 readTriangle' _ [] = []
-readTriangle' n w = take n w : readTriangle' (n + 1) (drop n w)
+readTriangle' n w  = take n w : readTriangle' (n + 1) (drop n w)
 
-maxValueAt 0 0 t = head $ head t
-maxValueAt r c t
-  | c < 0 = 0
-  | c > r = 0
-  | otherwise =
-      t !! r !! c +
-      max (maxValueAt (r - 1) (c - 1) t)
-          (maxValueAt (r - 1)  c      t)
+maxTriangle above [] = above
+maxTriangle []    t  = maxTriangle (head t) (drop 1 t)
+maxTriangle above t  = maxTriangle (maxima (head t) above) (drop 1 t)
 
-maxPath t = maximum $ map maxValues [0..rmax]
-  where
-    maxValues c = maxValueAt rmax c t
-    rmax = length t - 1
+maxima :: [Int] -> [Int] -> [Int]
+maxima row above =
+  zipWith max
+    (zipWith (+) (0 : above)    row)
+    (zipWith (+) (above ++ [0]) row)
